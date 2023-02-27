@@ -1,0 +1,10 @@
+.container-box{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img{
+    height: 280px;
+    object-fit: cover;
+}
