@@ -171,19 +171,28 @@ let data = {
     }
   ]
 }
-
+/*Funciones y loops */
 let eventCards = []
 for (let event of data.events) {
   let card = `
-      <div class="card p-2 ps-0 pe-0 pt-0 m-2 col-3" style="width:350px">
+      <div class="card p-2 ps-0 pe-0 pt-0 m-2 col-3" style="width:250px">
         <img src="${event.image}" class="card-img-top card-img img-fluid" alt="${event.name}">
         <div class="card-body text-center">
           <h5 class="card-title">${event.name}</h5>
           <p class="card-text">${event.description}</p>
-          <a href="./eventview.html" class="btn btn-danger">View details</a>
+        </div>
+        <div class="card-footer text-center"><a href="./eventview.html" class="btn btn-danger">View details</a>
         </div>
       </div>
     `
-    console.log(card)
-    eventCards.push(card)
+  eventCards.push(card)
 }
+/*Muestro Eventos en Home */
+function showEvents() {
+  let eventcontainer = document.getElementById('cardscontainer')
+  eventcontainer.innerHTML = eventCards.join('')
+}
+
+showEvents()
+
+
