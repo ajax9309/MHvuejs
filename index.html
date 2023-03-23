@@ -37,9 +37,11 @@
                 </div>
             </div>
         </nav>
-        <div class="d-flex bg-dark-subtle justify-content-xl-evenly justify-content-lg-evenly justify-content-md-evenly justify-content-sm-evenly justify-content-evenly ">
+        <div
+            class="d-flex bg-dark-subtle justify-content-xl-evenly justify-content-lg-evenly justify-content-md-evenly justify-content-sm-evenly justify-content-evenly ">
             <div>
-                <a href="./stats.html"><i class=" bi bi-caret-left-fill display-3 opacity-50 align-content-center"></i></a>
+                <a href="./stats.html"><i
+                        class=" bi bi-caret-left-fill display-3 opacity-50 align-content-center"></i></a>
             </div>
             <div>
                 <h1 class="text-dark-emphasis display-3">Home</h1>
@@ -50,18 +52,33 @@
         </div>
     </header>
     <main class="flex-grow-1">
-        <div class="d-flex flex-column text-center d-md-flex flex-md-row justify-content-md-evenly m-1">
-            <div id="categorycontainer" class="d-flex p-2 flex-column align-content-center d-md-flex flex-md-row">                
+        <div id="appvue">
+            <div class="d-flex flex-column text-center d-md-flex flex-md-row justify-content-md-evenly m-1">
+                <div id="categorycontainer" class="d-flex p-2 flex-column align-content-center d-md-flex flex-md-row">
+                    <div class="p-1 pe-3">
+                        <label class="text-primary" for="${each}">${each}</label>
+                        <input onClick="" class="checkbox ps-2" type="checkbox" name="${each}" value="${each}" id="${each}">
+                    </div>
+                </div>
+                <div class="d-inline-flex pt-2 justify-content-center">
+                    <form class="ps-2" method="get">
+                        <input onkeyup="" class="form-control flex-grow-1" placeholder="Type a keyword"
+                            type="text" name="find" id="find">
+                    </form>
+                </div>
             </div>
-            <div class="d-inline-flex pt-2 justify-content-center">
-                <form class="ps-2" method="get">
-                    <input onkeyup="capData()" class="form-control flex-grow-1" placeholder="Type a keyword" type="text" name="find" id="find">
-                </form>
+            <div id="cardscontainer" class="row text-secondary-emphasis w-100 d-flex align-content-center d-sm-flex flex-column flex-sm-row justify-content-sm-center">
+                <div v-if="events" v-for="each of events" class="card shadow-lg p-2 ps-0 pe-0 pt-0 m-2 col-3" style="width:250px">
+                    <img v-bind:src="each.image" class="card-img-top card-img img-fluid" v-bind:alt="each.name">
+                    <div class="card-body text-bg-dark text-center">
+                      <h5 class="card-title">{{each.name}}</h5>
+                      <p class="card-text">{{each.description}}</p>
+                    </div>
+                    <div class="card-footer text-center">
+                      <a href="./eventview.html?id=${each.id}" class="btn btn-danger">View details</a>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div id="cardscontainer" class="row text-secondary-emphasis w-100 d-flex align-content-center d-sm-flex flex-column flex-sm-row justify-content-sm-center">
-            
         </div>
     </main>
 
@@ -79,10 +96,12 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
-    <script src="./scripts/data_ae_1.js">
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+    <script src="./scripts/appvue.js"></script>
+    <!-- <script src="./scripts/data_ae_1.js">
     </script>
     <script src="./scripts/dataIndex.js">
     </script>
@@ -91,7 +110,7 @@
     <script src="./scripts/eventFilter.js">
     </script>
     <script src="./scripts/notFound.js">
-    </script>
+    </script> -->
 </body>
 
 
