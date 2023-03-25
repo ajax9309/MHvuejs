@@ -37,7 +37,8 @@
                 </div>
             </div>
         </nav>
-        <div class="d-flex bg-dark-subtle justify-content-xl-evenly justify-content-lg-evenly justify-content-md-evenly justify-content-sm-evenly justify-content-evenly">
+        <div
+            class="d-flex bg-dark-subtle justify-content-xl-evenly justify-content-lg-evenly justify-content-md-evenly justify-content-sm-evenly justify-content-evenly">
             <div>
                 <h1 class="text-dark-emphasis display-3">Event Details</h1>
             </div>
@@ -45,7 +46,38 @@
 
     </header>
     <main class="flex-grow-1">
-        <div class="d-flex rounded justify-content-center ali" id="containerdetail">
+        <div id="appvue" class="d-flex rounded justify-content-center">
+            <div>
+                <div v-if="eventDetail" class="card m-2" style="max-width: 950px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img id="imgdetails" :src="eventDetail.image" class="rounded-start img-fluid" :alt="eventDetail.name">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{eventDetail.name}}</h5>
+                                <p class="card-text">{{eventDetail.description}}</p>
+                            </div>
+                            <div class="card-footer text-muted d-flex justify-content-between">
+                                <div><span>Price: $ {{eventDetail.price}}</span></div>
+                                <div v-if="eventDetail.assistance"><span>Assistance: {{eventDetail.assistance}}</span></div>
+                                <div v-else=""><span>Estimate: {{eventDetail.estimate}}</span></div>
+                                <div><span>Place: {{eventDetail.place}}</span></div>
+                                <div><span>Capacity: {{eventDetail.capacity}}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="eventDetail.estimate" class="d-grid gap-2 mt-2 mb-1 ms-2 me-2">
+                    <a href="./upcomingevent.html" class="btn btn-primary" type="button">Go Back</a>
+                </div>
+                <div v-else-if="eventDetail.assistance" class="d-grid gap-2 mt-2 mb-1 ms-2 me-2">
+                    <a href="./pastevents.html" class="btn btn-primary" type="button">Go Back</a>
+                </div>
+                <div v-else class="d-grid gap-2 mt-2 mb-1 ms-2 me-2">
+                    <a href="./index.html" class="btn btn-primary" type="button">Go Back</a>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -66,7 +98,12 @@
         </div>
     </footer>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script src="./scripts/data_ae_1.js"></script>
-<script src="./scripts/dataDetails.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+<script src="./scripts/detailvue.js"></script>
+<!-- <script src="./scripts/data_ae_1.js"></script>
+<script src="./scripts/dataDetails.js"></script> -->
+
 </html>
